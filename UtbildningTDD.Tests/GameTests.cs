@@ -1,12 +1,12 @@
 ﻿using Xunit;
 namespace UtbildningTDD.Tests;
 
-public class GameSimulatorTests
+public class GameTests
 {
     [Fact]
     public void NoRollsZeroPoints()
     {
-        var sut = new GameSimulator();
+        var sut = new Game();
         
         var result = sut.Score();
         
@@ -16,7 +16,7 @@ public class GameSimulatorTests
     [Fact]
     public void Roll1Score1()
     {
-        var sut = new GameSimulator();
+        var sut = new Game();
         
         sut.Roll(1);
         var result = sut.Score();
@@ -27,7 +27,7 @@ public class GameSimulatorTests
     [Fact]
     public void TwoRolls1Score2()
     {
-        var sut = new GameSimulator();
+        var sut = new Game();
         
         sut.Roll(1);
         sut.Roll(1);
@@ -39,7 +39,7 @@ public class GameSimulatorTests
     [Fact]
     public void SpareReturnsNoScore()
     {
-        var sut = new GameSimulator();
+        var sut = new Game();
         
         sut.Roll(1);
         sut.Roll(9);

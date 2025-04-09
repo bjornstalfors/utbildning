@@ -1,6 +1,6 @@
 namespace UtbildningTDD;
 
-public class GameSimulator
+public class 
 {
     private int rolls;
     
