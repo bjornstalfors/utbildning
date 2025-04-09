@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtbildningTDD.Tests", "Utbi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtbildningTDD", "UtbildningTDD\UtbildningTDD.csproj", "{1BDECEDE-A27E-41BE-A126-361E4BA2037B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtbildningSEAMS", "UtbildningSEAMS\UtbildningSEAMS.csproj", "{C72C3C16-CCDB-4F84-A83A-247E95901BD6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{1BDECEDE-A27E-41BE-A126-361E4BA2037B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BDECEDE-A27E-41BE-A126-361E4BA2037B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BDECEDE-A27E-41BE-A126-361E4BA2037B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C72C3C16-CCDB-4F84-A83A-247E95901BD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C72C3C16-CCDB-4F84-A83A-247E95901BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C72C3C16-CCDB-4F84-A83A-247E95901BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C72C3C16-CCDB-4F84-A83A-247E95901BD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
