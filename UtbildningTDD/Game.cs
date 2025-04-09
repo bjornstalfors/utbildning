@@ -69,7 +69,7 @@ internal class Frame(int index)
         if (IsStrike && NextFrame is not null && NextFrame.rolls.Count == 2)
         {
             return 10 + NextFrame.rolls[0] + NextFrame.rolls[1];
-        }    
+        }
 
         return IsSpare || IsStrike ? 0 : rolls.Sum();
     }

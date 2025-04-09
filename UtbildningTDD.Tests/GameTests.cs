@@ -89,6 +89,16 @@ public class GameTests
         var result = sut.Score();
         
         Assert.Equal(1, result);    
+    }
+        
+    [Fact]
+    public void TenStrikesIs300()  // Aha! Det är ju faktiskt 1? Min förståelse för spelet har ökat...
+    {
+        var sut = CreateSut(10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+        
+        var result = sut.Score();
+        
+        Assert.Equal(300, result);    
     }    
     
     private Game CreateSut(params int[] rolls)
