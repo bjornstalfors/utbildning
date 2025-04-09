@@ -3,12 +3,11 @@ namespace UtbildningTDD;
 public class Game
 {
     private readonly Frame[] frames = new Frame[10];
-    private int currentFrame;
     private bool frameComplete;
 
     public Game()
     {
-        currentFrame = 0;
+        CurrentFrame = 0;
         for (var i = 0; i < 10; i++)
         {
             frames[i] = new Frame(i);
@@ -20,8 +19,8 @@ public class Game
         }
     }
     
-    public int CurrentFrame => currentFrame;
-    
+    public int CurrentFrame { get; private set; }
+
     public int Score()
     {
         return frames.Sum(x => x.Score());
@@ -29,10 +28,10 @@ public class Game
 
     public void Roll(int roll)
     {
-        frameComplete = frames[currentFrame].Roll(roll);
+        frameComplete = frames[CurrentFrame].Roll(roll);
         if (frameComplete)
         {
-            currentFrame++;
+            CurrentFrame++;
         }
     }
 }
@@ -53,6 +52,11 @@ internal class Frame(int index)
     
     private bool IsStrike => rolls.Count == 1 && rolls.Sum() == 10;
     
+    private int Bonus1 => NextFrame.rolls[0];
+    
+    private int Bonus2 => NextFrame.rolls[1];
+    
+    
     private bool HasRolls => rolls.Count > 0;
 
     public int Score()
@@ -62,11 +66,11 @@ internal class Frame(int index)
             return 10 + NextFrame.rolls[0];
         }
         
-        if (IsStrike && NextFrame is not null && NextFrame.HasRolls)
+        if (IsStrike && NextFrame is not null && NextFrame.rolls.Count == 2)
         {
             return 10 + NextFrame.rolls[0] + NextFrame.rolls[1];
-        }        
+        }    
 
-        return IsSpare ? 0 : rolls.Sum();
+        return IsSpare || IsStrike ? 0 : rolls.Sum();
     }
 }
