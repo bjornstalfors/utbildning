@@ -5,12 +5,18 @@ namespace UtbildningSEAMS;
 
 public class BusinessLogic
 {
+    private readonly IRepository? repository;
+
+    public BusinessLogic(IRepository? repository = null)
+    {
+        this.repository = repository ?? new Repository();
+    }
+    
+    
     public async Task<(string, double)> WeatherInMostDenseCity()
     {
-        var context = new UserDatabaseContext();
-        
-        var cities = context.Cities.ToList();
-        
+        var cities = repository.GetCities();
+
         // Advanced business logic (calculate density)
         var convertedCities = cities.Select(x => new
         {
@@ -43,7 +49,7 @@ public class BusinessLogic
 
         return (densestCity.Name, latestTemp);
     }
-    
+
     public record Temperature(
         double latitude,
         double longitude,
