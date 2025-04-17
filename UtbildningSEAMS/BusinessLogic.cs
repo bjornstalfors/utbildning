@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Text.Json;
 
 namespace UtbildningSEAMS;
@@ -19,11 +20,13 @@ public class BusinessLogic
             x.Latitude
         }).ToList();
         
+        // Advanced business logic (find densest city)
         var densestCity = convertedCities.OrderByDescending(x => x.Density).FirstOrDefault();
-
+        
+        // https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m
         var client = new HttpClient();
         client.BaseAddress = new Uri("https://api.open-meteo.com/v1/");
-        var response = await client.GetAsync($"forecast?latitude={densestCity.Latitude}&longitude={densestCity.Longitude}&hourly=temperature_2m");
+        var response = await client.GetAsync($"forecast?latitude={densestCity.Latitude.ToString(CultureInfo.InvariantCulture)}&longitude={densestCity.Longitude.ToString(CultureInfo.InvariantCulture)}&hourly=temperature_2m");
 
         response.EnsureSuccessStatusCode();
         
@@ -31,6 +34,12 @@ public class BusinessLogic
         
         var temperature = JsonSerializer.Deserialize<Temperature>(content);
         var latestTemp = temperature.hourly.temperature_2m[0];
+        
+        // Snarky comment if they have it good
+        if (latestTemp > 10.00)
+        {
+            Console.WriteLine("!");
+        }
 
         return (densestCity.Name, latestTemp);
     }

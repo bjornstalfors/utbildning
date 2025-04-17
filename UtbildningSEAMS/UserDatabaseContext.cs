@@ -45,12 +45,6 @@ public class UserDatabaseContext : DbContext
             context.Set<City>().Add(new City { Name = "Stockholm", Population = 1250000, Area = 188, Latitude = 59.3293, Longitude = 18.0686 });
             context.SaveChanges(); 
         });
-
-    /*protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<City>().ToTable("Cities");
-        base.OnModelCreating(modelBuilder);
-    }*/
 }
 
 public class City
