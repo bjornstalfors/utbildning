@@ -1,18 +1,10 @@
-Skapa/seeda
+### Köra igång
 
-### Installation
+Eventuellt kan det behöva köras en 
+```$ dotnet restore```
 
-### Prerequsites
-dotnet tool install --global dotnet-ef
+### Visual Studio Test Runner
 
-### Visual Studio
-
-Installera ett en speciell runner (via nuget) f�r att k�ra testerna i b�gge testprojekten
+Installera ett en speciell runner (via nuget) för att kunna köra xUnit-tester
 xunit.runner.visualstudio 
 
-$ cd UtbildningSEAMS
-$ dotnet ef database update
-
-
-$ cd UtbildningSEAMS.Tests
-$ dotnet add package xunit.runner.visualstudio --version 3.0.2
