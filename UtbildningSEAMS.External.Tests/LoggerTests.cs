@@ -1,4 +1,4 @@
-namespace UtbildningSEAMS.Tests;
+namespace UtbildningSEAMS.External.Tests;
 
 public class LoggerTests
 {

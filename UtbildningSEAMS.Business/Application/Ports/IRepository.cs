@@ -4,5 +4,5 @@ namespace UtbildningSEAMS.Business.Application.Ports;
 
 public interface IRepository
 {
-    List<City> GetCities();
+    Task<List<City>> GetCities();     
 }

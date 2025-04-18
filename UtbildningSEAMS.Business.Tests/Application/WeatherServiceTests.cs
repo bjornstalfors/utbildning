@@ -1,11 +1,10 @@
 ﻿using Moq;
-using UtbildningSEAMS.Business;
 using UtbildningSEAMS.Business.Application;
 using UtbildningSEAMS.Business.Application.Ports;
 using UtbildningSEAMS.Business.Domain;
 using Xunit;
 
-namespace UtbildningSEAMS.Tests;
+namespace UtbildningSEAMS.Business.Tests.Application;
 
 
 public class WeatherServiceTests
@@ -22,8 +21,9 @@ public class WeatherServiceTests
     
     public WeatherServiceTests()
     {
-        repository.Setup(x => x.GetCities()).Returns(twoCities);
+        repository.Setup(x => x.GetCities()).ReturnsAsync(twoCities);
         densityCalculator.Setup(x => x.FindDensestCity(twoCities)).Returns(Dense);
+        SetCityTemperature(Dense, 6.1d);
     }
 
     [Fact]
@@ -60,7 +60,7 @@ public class WeatherServiceTests
     public async Task PrintNothingIfItsLagomt()
     {
         var sut = CreateSut();
-        SetTemperature(7.6d);
+        SetCityTemperature(Dense, 7.6d);
         
         await sut.WeatherInMostDenseCity();
         
@@ -71,7 +71,7 @@ public class WeatherServiceTests
     public async Task PrintSnarkyCommentIfTooWarm()
     {
         var sut = CreateSut();
-        SetTemperature(12.1d);
+        SetCityTemperature(Dense, 12.1d);
         
         await sut.WeatherInMostDenseCity();
         
@@ -88,8 +88,8 @@ public class WeatherServiceTests
         return new City { Name = name, Population = p, Area = a, Longitude = lon, Latitude = lat };
     }
     
-    private void SetTemperature(double temperature)
+    private void SetCityTemperature(City city, double temperature)
     {
-        temperatureService.Setup(x => x.GetLatestTemperature(Dense.Longitude, Dense.Latitude)).Returns(Task.FromResult(temperature));
+        temperatureService.Setup(x => x.GetLatestTemperature(city.Longitude, city.Latitude)).ReturnsAsync(temperature);
     }
 }

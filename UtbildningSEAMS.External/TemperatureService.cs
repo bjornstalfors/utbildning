@@ -6,10 +6,10 @@ namespace UtbildningSEAMS.External;
 
 public class TemperatureService : ITemperatureService
 {
-    public async Task<double> GetLatestTemperature(double longitude, double latitude)
+    public async Task<double?> GetLatestTemperature(double longitude, double latitude)
     {
-        // Hur testar vi den här?
-        var client = new HttpClient();      // så här får man egentligen inte göra...
+        // TODO Hur testar vi den här? Behöver vi testa den här?
+        var client = new HttpClient();      // så här får man egentligen inte göra heller...
         client.BaseAddress = new Uri("https://api.open-meteo.com/v1/");
         var response = await client.GetAsync($"forecast?latitude={latitude.ToString(CultureInfo.InvariantCulture)}&longitude={longitude.ToString(CultureInfo.InvariantCulture)}&hourly=temperature_2m");
 

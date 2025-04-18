@@ -2,7 +2,7 @@ using UtbildningSEAMS.Business.Application.Ports;
 using UtbildningSEAMS.Business.Domain;
 using Xunit;
 
-namespace UtbildningSEAMS.Tests;
+namespace UtbildningSEAMS.Business.Tests.Domain;
 
 public class DensityCalculatorTests
 {
@@ -37,7 +37,7 @@ public class DensityCalculatorTests
         Assert.Same(dense, result);
     }
     
-    // TODO Finns det några fler testfall här jag vill täcka av?
+    // TODO Finns det några fler testfall här jag missat? Code coverage OK?
 
     private static City CreateCity(int population = 1, int area = 1)
     {

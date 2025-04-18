@@ -21,6 +21,7 @@ using var scope = host.Services.CreateScope();
 
 #region Database
 var context = scope.ServiceProvider.GetRequiredService<UserDatabaseContext>();
+//context.Database.EnsureDeleted();
 if (context.Database.EnsureCreated())
 {
     context.Cities.AddRange(

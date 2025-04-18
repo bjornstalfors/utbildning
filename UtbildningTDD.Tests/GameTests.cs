@@ -92,7 +92,7 @@ public class GameTests
     }
         
     [Fact]
-    public void TenStrikesIs300()  // Aha! Det är ju faktiskt 1? Min förståelse för spelet har ökat...
+    public void TenStrikesIs300()  // Lämna alltid ett rött test innan man går för dagen
     {
         var sut = CreateSut(10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
         
